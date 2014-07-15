@@ -1,0 +1,47 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.br.acti</groupId>
+  <artifactId>acti-web</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>ACTi</name>
+  <description>ACTi - Tecnologia da Informação</description>
+  
+  <!-- ********** VARIÁVEIS DE VERSIONAMENTO ********** -->
+  <properties>
+  	<SPRING-MVC.version>4.0.5.RELEASE</SPRING-MVC.version>
+  </properties>
+  
+  <!-- ********** DEPENDÊNCIAS ********** -->
+  <dependencies>
+	  <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>${SPRING-MVC.version}</version>
+	  </dependency>
+	  
+	  <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+		<version>${SPRING-MVC.version}</version>
+	  </dependency>
+	  
+	  <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-beans</artifactId>
+		<version>${SPRING-MVC.version}</version>
+	  </dependency>
+	  
+	  <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+		<version>${SPRING-MVC.version}</version>
+	  </dependency>
+	  
+	  <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+		<version>${SPRING-MVC.version}</version>
+	  </dependency>
+  </dependencies>
+  
+</project>
