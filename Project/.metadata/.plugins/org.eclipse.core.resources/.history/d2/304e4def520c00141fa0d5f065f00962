@@ -1,0 +1,167 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <!-- ********** ESPECIFICAÇÕES DO PROJETO ********** -->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.br.acti</groupId>
+  <artifactId>acti-web</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>ACTi</name>
+  <description>ACTi - Tecnologia da Informação</description>
+  
+  <!-- ********** VARIÁVEIS DE VERSIONAMENTO ********** -->
+  <properties>
+  	
+  	<Spring-MVC.version>4.0.5.RELEASE</Spring-MVC.version>
+  	<JUnit.version>4.11</JUnit.version>
+  	<Hibernate.version>4.3.5.Final</Hibernate.version>
+  	<Javax-servlet.version>3.0.1</Javax-servlet.version>
+  	<Jstl.version>1.2</Jstl.version>
+  	<Bootstrap.version>3.2.0</Bootstrap.version>
+  	<Sitemesh.version>2.4.2</Sitemesh.version>
+  	<Commons-lang.version>3.3.2</Commons-lang.version>
+  	
+  </properties>
+  
+  <!-- ********** DEPENDÊNCIAS ********** -->
+  <dependencies>
+  
+  	  <!-- ********************** -->
+  	  <!-- ***** Spring-MVC ***** -->
+	  <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<version>${Spring-MVC.version}</version>
+	  </dependency>
+	  
+	  <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+		<version>${Spring-MVC.version}</version>
+	  </dependency>
+	  
+	  <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-beans</artifactId>
+		<version>${Spring-MVC.version}</version>
+	  </dependency>
+	  
+	  <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+		<version>4.0.5.RELEASE</version>
+	  </dependency>
+	  
+	  <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+		<version>${Spring-MVC.version}</version>
+	  </dependency>
+	  
+	  <dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+		<version>${Spring-MVC.version}</version>
+	  </dependency>
+	  
+	  <!-- ***************** -->
+	  <!-- ***** JUnit ***** -->
+	  <dependency>
+		<groupId>junit</groupId>
+		<artifactId>junit</artifactId>
+		<version>${JUnit.version}</version>
+	  </dependency>
+	  
+	  <!-- ********************* -->
+	  <!-- ***** Hibernate ***** -->
+	  <dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-entitymanager</artifactId>
+		<version>${Hibernate.version}</version>
+	  </dependency>
+
+	  <!-- ******************************** -->
+	  <!-- ***** WEBAPP: Javax / JSTL ***** -->
+	  <dependency>
+		<groupId>javax.servlet</groupId>
+		<artifactId>javax.servlet-api</artifactId>
+		<version>${Javax-servlet.version}</version>
+	  </dependency> 
+	  
+	  <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>${Jstl.version}</version>
+      </dependency>
+      
+      <!-- ********************* -->
+	  <!-- ***** Sitemesh ***** -->
+	  <dependency>
+		<groupId>opensymphony</groupId>
+		<artifactId>sitemesh</artifactId>
+		<version>${Sitemesh.version}</version>
+	  </dependency>
+
+      
+      <!-- ********************* -->
+	  <!-- ***** Bootstrap ***** -->
+      <dependency>
+        <groupId>org.webjars</groupId>
+        <artifactId>bootstrap</artifactId>
+        <version>${Bootstrap.version}</version>
+      </dependency>
+
+      <!-- ********************************************* -->
+	  <!-- ***** Apache Commons Lang (StringUtils) ***** -->	          
+	  <dependency>
+		<groupId>org.apache.commons</groupId>
+		<artifactId>commons-lang3</artifactId>
+		<version>3.3.2</version>
+	  </dependency>  
+
+  </dependencies>
+  
+  <!-- ********** CONFIGURAÇÕES DE BUILD DO SERVIDOR JETTY - GERAÇÃO DE .JAR  ********** -->
+  <profiles>
+      <profile>
+          <id>jetty</id>
+          <activation>
+              <activeByDefault>true</activeByDefault>
+          </activation>
+          <build>
+              <plugins>
+                  <plugin>
+                      <groupId>org.mortbay.jetty</groupId>
+                      <artifactId>maven-jetty-plugin</artifactId>
+                      <version>6.1.26</version>
+                      <configuration>
+                          <useTestClasspath>true</useTestClasspath>
+                          <contextPath>/app</contextPath>
+                          <stopKey>1</stopKey>
+                          <stopPort>9999</stopPort>
+                      </configuration>
+                      <executions>
+                          <execution>
+                              <id>start-jetty</id>
+                              <phase>pre-integration-test</phase>
+                              <goals>
+                                  <goal>run</goal>
+                              </goals>
+                              <configuration>
+                                  <daemon>true</daemon>
+                              </configuration>
+                          </execution>
+                          <execution>
+                              <id>stop-jetty</id>
+                              <phase>post-integration-test</phase>
+                              <goals>
+                                  <goal>stop</goal>
+                              </goals>
+                          </execution>
+                      </executions>
+                  </plugin>
+              </plugins>
+          </build>
+      </profile>
+  </profiles>
+  
+</project>

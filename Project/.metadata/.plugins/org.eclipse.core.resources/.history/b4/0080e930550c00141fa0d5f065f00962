@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+ 
+    <!-- Procura por annotations nos componentes do diretório especificado -->
+    <context:component-scan base-package="com.br.acti"/>
+ 
+    <!-- Processa annotations registradas em beans(componentes), como @Autowired.. -->
+    <context:annotation-config/>
+ 
+    <!-- Registra o "DefaultAnnotationHandlerMapping" e
+         "AnnotationMethodHandlerAdapter" beans que são necessários para o Spring MVC  -->
+    <mvc:annotation-driven/>
+ 
+    <!-- Classe que se encarrega de ser a "Exception Resolver" dos métodos assinados com a annotation @ExceptionHandler -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver"/>
+ 
+    <!-- Especifica aonde se encontram os JSPs do projeto -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+ 
+    <!-- Permite mapear o DispatcherServlet para "/" -->
+    <mvc:default-servlet-handler/>
+ 
+    <!-- Mapeamento de resources do projeto -->
+    <mvc:resources mapping="/assets/**" location="classpath:/resources/webjars/"/>
+    <mvc:resources mapping="/css/**" location="/css/"/>
+    <mvc:resources mapping="/img/**" location="/img/"/>
+    <mvc:resources mapping="/js/**" location="/js/"/>
+ 
+</beans>
